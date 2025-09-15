@@ -3,7 +3,7 @@
 *Data:* 14 de julho de 2025
 *Versão:* 1.0
 
-Link para vídeo do protótipo: https://www.youtube.com/shorts/0xexnAiSagE
+Link para vídeo do protótipo: https://www.youtube.com/shorts/0xexnAiSagE <br>
 Link para apresentação em slides: https://www.canva.com/design/DAGzAQNm4pQ/IyQZWU2rYadh9C0FGD5n2A/edit?utm_content=DAGzAQNm4pQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 ### Descrição do Problema
