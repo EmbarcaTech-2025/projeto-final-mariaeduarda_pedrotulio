@@ -4,6 +4,7 @@
 *Versão:* 1.0
 
 Link para vídeo do protótipo: https://www.youtube.com/shorts/0xexnAiSagE
+Link para apresentação em slides: https://www.canva.com/design/DAGzAQNm4pQ/IyQZWU2rYadh9C0FGD5n2A/edit?utm_content=DAGzAQNm4pQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 ### Descrição do Problema
 Motoristas entusiastas e pilotos amadores buscam aprimorar sua performance e a de seus veículos, mas encontram dificuldades em obter dados detalhados e em tempo real de forma acessível. As ferramentas de telemetria existentes podem ser complexas e caras, exigindo conhecimento técnico avançado. A falta de informações sobre o desempenho do veículo, como a temperatura de admissão, o momento ideal de troca de marcha ou o desempenho em aceleração, impede uma direção mais eficiente e segura. Existe uma lacuna no mercado para um dispositivo unificado que compile e apresente essas informações de forma clara e interativa, auxiliando no aprimoramento da pilotagem.
