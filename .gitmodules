@@ -1,0 +1,3 @@
+[submodule "shiftlight"]
+	path = shiftlight
+	url = https://github.com/PedrooCamilo/shiftlight
