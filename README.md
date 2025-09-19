@@ -1,54 +1,74 @@
 ## Projeto Final: Sistema de Telemetria Veicular
 *Documento: Definição de Requisitos e Lista de Materiais*
-*Data:* 14 de julho de 2025
-*Versão:* 1.0
+*Data:* 19 de setembro de 2025
+*Versão:* 2.0
 
 Link para vídeo do protótipo: https://www.youtube.com/shorts/0xexnAiSagE <br>
 Link para apresentação em slides: https://www.canva.com/design/DAGzAQNm4pQ/IyQZWU2rYadh9C0FGD5n2A/edit?utm_content=DAGzAQNm4pQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
-### Descrição do Problema
-Motoristas entusiastas e pilotos amadores buscam aprimorar sua performance e a de seus veículos, mas encontram dificuldades em obter dados detalhados e em tempo real de forma acessível. As ferramentas de telemetria existentes podem ser complexas e caras, exigindo conhecimento técnico avançado. A falta de informações sobre o desempenho do veículo, como a temperatura de admissão, o momento ideal de troca de marcha ou o desempenho em aceleração, impede uma direção mais eficiente e segura. Existe uma lacuna no mercado para um dispositivo unificado que compile e apresente essas informações de forma clara e interativa, auxiliando no aprimoramento da pilotagem.
+**O projeto e as instruções sobre ele encontram-se no repositório shiftlight, adicionado como submódulo.**
+
+## 📌 Descrição do Problema
+Motoristas entusiastas e pilotos amadores buscam aprimorar sua performance e a de seus veículos, mas encontram dificuldades em obter dados detalhados e em tempo real de forma acessível.  
+As ferramentas de telemetria existentes podem ser complexas e caras.  
+A falta de informações sobre o desempenho do veículo — como a temperatura de admissão, o momento ideal de troca de marcha ou o desempenho em aceleração — impede uma direção mais eficiente e segura.  
+
+Existe uma lacuna no mercado para um dispositivo unificado que compile e apresente essas informações de forma clara e interativa.
 
 ---
 
-### Objetivo do Projeto
-Desenvolver um protótipo de um sistema de telemetria veicular capaz de coletar, processar e exibir informações vitais do veículo em um display. O sistema deverá integrar funcionalidades de monitoramento do motor, como a leitura de dados via OBD e a temperatura de admissão, e dados de desempenho, como o tempo de aceleração (0 a 100 km/h) e o consumo de combustível. O dispositivo terá uma interface interativa para que o usuário selecione as informações a serem visualizadas, além de um alerta para a troca de marchas. O sistema também deverá ser capaz de gravar vídeos da pista e monitorar o tempo de percurso via GPS, fornecendo um conjunto abrangente de ferramentas para análise de desempenho.
+## 🎯 Objetivo do Projeto
+Desenvolver um sistema de **telemetria veicular** utilizando um **Raspberry Pi Pico**, capaz de coletar, processar e exibir informações vitais do veículo em tempo real.  
+
+O sistema utiliza um **script Python** como ponte para se comunicar com um **adaptador OBD-II Bluetooth**, obtendo dados do motor e enviando-os ao Pico via comunicação serial.  
+
+O dispositivo apresenta uma **interface interativa em um display LCD**, controlada por um **joystick**, e integra funcionalidades como:  
+- Monitoramento em tempo real  
+- **Shift light progressivo** em matriz de LEDs  
+- Testes de performance (0-100 km/h)  
+- Análise de consumo  
+- Sistema de alertas visuais para parâmetros críticos  
 
 ---
 
-### Requisitos Técnicos
+## ⚙️ Requisitos Técnicos
 
-#### 1. Requisitos Funcionais (RF)
-*RF1 – Visualização no Display:* O sistema deverá exibir informações do veículo em tempo real no display. <br>
-*RF2 – Menu Interativo:* O sistema deverá ter um menu interativo que permitirá ao usuário selecionar as informações que deseja visualizar.<br>
-*RF3 – Shiftlight:* O sistema deverá informar o momento certo da troca de marcha por meio de um aviso visual (shiftlight) no display.<br>
-*RF4 – Monitoramento da Temperatura de Admissão:* O sistema deverá monitorar e exibir a temperatura do ar de admissão no display.<br>
-*RF5 – Estatísticas de Desempenho:* O sistema deverá registrar e exibir estatísticas relacionadas à velocidade/desempenho do carro, como o tempo de 0 a 100 km/h.<br>
-*RF6 – Teste de Gasto de Combustível:* O sistema deverá permitir que o usuário defina um tempo para realizar um teste de consumo de combustível e exibir o resultado no display.<br>
-*RF7 – Monitoramento da Bateria:* O sistema deverá monitorar e exibir a voltagem da bateria do veículo no display.<br>
-*RF8 – Gravação de Vídeo:* O sistema deverá utilizar uma câmera para realizar a gravação de vídeo da pista.<br>
-*RF9 – Monitoramento de Percurso:* O sistema deverá utilizar um módulo GPS para monitorar e registrar o tempo de percurso.<br>
-*RF10 – Cálculo de Aceleração e Frenagem:* O sistema deverá utilizar um acelerômetro para calcular o tempo de aceleração e frenagem.<br>
-
-#### 2. Requisitos Não Funcionais (RNF)
-*RNF1: Portabilidade/Instalação:* O dispositivo final deverá ser compacto e fácil de instalar e remover do veículo.<br>
-*RNF2: Autonomia de Energia:* Sendo alimentado pela bateria do veículo, o protótipo deverá ter um consumo de energia otimizado para não impactar o sistema elétrico do carro.<br>
-*RNF3: Usabilidade:* A interface do usuário deverá ser intuitiva. A ativação dos testes e a navegação entre os menus devem ser simples e diretas.<br>
-*RNF4: Responsividade:* O sistema deverá responder aos comandos do teclado e aos dados do carro em tempo real, com latência inferior a 1 segundo para medições críticas como o shiftlight.<br>
-*RNF5: Robustez:* O protótipo deverá ser montado em um case (caixa protetora) que o proteja de vibrações e impactos leves do ambiente veicular.<br>
+### 🔹 1. Requisitos Funcionais (RF)
+- **RF1 – Visualização no Display**: O sistema exibe em tempo real múltiplos parâmetros do motor, como **RPM, velocidade, temperatura de admissão (IAT), temperatura do líquido de arrefecimento, avanço de ignição e AFR comandado**.  
+- **RF2 – Menu Interativo**: O sistema possui um menu interativo, navegável via joystick, permitindo selecionar diferentes modos de operação.  
+- **RF3 – Shiftlight Progressivo**: Informa o momento da troca de marcha por meio de uma **matriz de LEDs 5x5**, com efeitos progressivos conforme a RPM aumenta.  
+- **RF4 – RPM Alvo Configurável**: O usuário pode ajustar o RPM alvo para o acionamento do shift light através do menu de configurações.  
+- **RF5 – Estatísticas de Desempenho**: Registra e exibe o tempo de aceleração de **0 a 100 km/h**.  
+- **RF6 – Teste de Gasto de Combustível**: Permite iniciar e parar um teste cronometrado de consumo, exibindo o **volume total gasto em litros**.  
+- **RF7 – Sistema de Alertas**: Monitora parâmetros críticos (ex: IAT) e exibe **alerta visual em tela cheia** caso os limites sejam excedidos.  
+- **RF8 – Datalogging em CSV**: O script Python grava os dados em arquivos `.csv` para análise posterior.  
+- **RF9 – Comunicação Dual-Core**: O firmware do Pico utiliza os **dois núcleos** do microcontrolador:  
+  - Um dedicado à recepção de dados seriais.  
+  - Outro para lógica principal e interface gráfica.  
 
 ---
 
-### Lista de Materiais
-| Componente | Interface / Tipo | Função Principal no Projeto |
-| :--- | :--- | :--- |
-| *Placa Principal BitDogLab* | Microcontrolador | Cérebro do projeto, responsável pelo processamento de todos os dados e pela lógica do sistema. |
-| *Módulo OBD-II* | CAN/UART | Leitura de dados do motor, como RPM, velocidade, temperatura do motor, entre outros. |
-| *[Sensor i2c] Acelerômetro* | I2C | Detecção de movimento para o cálculo de aceleração e frenagem. |
-| *Periférico GPS* | UART | Aquisição de coordenadas geográficas para localização e medição de tempo de percurso. |
-| *Periférico Display LCD 320x240 pixels* | SPI | Interface principal com o usuário, exibição de todos os dados e menus. |
-| *Periférico Teclado Matricial* | GPIO | Entrada do usuário para navegação em menus, início de testes e interação com o sistema. |
-| *Periférico Armazenamento SDCARD* | SPI | Armazenamento de histórico de dados e eventos (data logging), e gravações da câmera. |
-| *Câmera Veicular* | USB/Interface | Gravação de vídeo da pista para análise. |
-| *Protoboard e Jumpers* | Conexão | Conexão dos periféricos à placa principal durante o desenvolvimento. |
-| *Case para Protótipo* | Estrutura | Caixa (impressa em 3D ou outra) para proteger e dar forma final ao dispositivo. |
+### 🔹 2. Requisitos Não Funcionais (RNF)
+- **RNF1 – Portabilidade/Instalação**: O dispositivo final deve ser **compacto** e de **fácil instalação** no painel do veículo.  
+- **RNF2 – Autonomia de Energia**: O protótipo deve ser alimentado via **porta USB**, com consumo otimizado.  
+- **RNF3 – Usabilidade**: Interface intuitiva, com navegação por **joystick** e botão de seleção.  
+- **RNF4 – Responsividade**: O sistema responde em **tempo real**, com latência mínima para medições críticas como o shift light.  
+- **RNF5 – Robustez**: O protótipo deve ser protegido em um **case resistente a vibrações e impactos leves** do ambiente veicular.  
+
+---
+
+## 🛠️ Lista de Materiais
+
+| Componente                  | Interface / Tipo         | Função Principal no Projeto                                                                 |
+|-----------------------------|--------------------------|---------------------------------------------------------------------------------------------|
+| **Raspberry Pi Pico**       | Microcontrolador         | Cérebro do projeto: processamento, lógica e controle dos periféricos                        |
+| **Computador com Python**   | USB/Serial & BLE         | Executa o script que conecta ao OBD-II via Bluetooth e envia dados ao Pico via USB          |
+| **Adaptador OBD-II**        | Bluetooth Low Energy     | Leitura de dados da ECU (RPM, velocidade, IAT, etc.)                                        |
+| **Display LCD (ex: 240x240)** | SPI                    | Interface principal com o usuário: exibição de dados, menus e alertas                       |
+| **Módulo Joystick Analógico** | GPIO / ADC             | Entrada para navegação em menus e interação com o sistema                                   |
+| **Matriz de LEDs 5x5 WS2812B** | PIO (GPIO)            | Exibição visual progressiva do shift light                                                  |
+| **Módulo de Som / Buzzer**  | GPIO                     | Emite alerta sonoro quando o RPM alvo do shift light é atingido                             |
+| **Protoboard e Jumpers**    | Conexão                  | Conexão dos periféricos ao Raspberry Pi Pico durante o desenvolvimento                      |
+| **Case para Protótipo**     | Estrutura                | Caixa (impressa em 3D ou outra) para proteger e dar forma final ao dispositivo              |
+
+---
